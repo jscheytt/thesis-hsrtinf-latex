@@ -1,0 +1,131 @@
+% Template format
+\documentclass[
+	12pt,
+	a4paper,
+%	draft
+]{report}
+\usepackage[
+	a4paper,
+	left=3.5cm,
+	right=2.5cm,
+	top=2.5cm,
+	bottom=2cm
+]{geometry}
+
+% Language
+\usepackage[english,ngerman]{babel}
+\addto{\captionsngerman}{\renewcommand{\abstractname}{Abstract}}
+
+% Encoding
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+
+% Structure and links
+\usepackage[nottoc]{tocbibind}
+\usepackage[
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=black,
+	filecolor=black,
+	urlcolor=blue,
+	linktoc=all,
+	pdfusetitle,
+]{hyperref}
+
+% Figures
+\usepackage{graphicx}
+\usepackage{subcaption}
+%\usepackage{rotating} % For landscape figures
+
+\usepackage[babel]{csquotes}
+\MakeOuterQuote{"}
+
+% Citations
+\usepackage[
+	backend=biber,
+	style=numeric-comp,
+	minbibnames=10,
+	maxbibnames=10,
+	maxcitenames=2,
+	giveninits=true,
+	eprint=false,
+	sorting=none,
+]{biblatex}
+% Ignore some fields which Citavi automatically adds
+\AtEveryBibitem{
+	\clearlist{language}
+	\clearfield{note}
+	\clearfield{eventtitle}
+	\clearfield{venue}
+	\clearfield{booksubtitle}
+	\ifthenelse{\ifentrytype{misc}\OR\ifentrytype{online}}{}{\clearfield{url}}
+}
+\DefineBibliographyStrings{german}{
+	andothers = {et\addabbrvspace al\adddot},
+	andmore = {et\addabbrvspace al\adddot},
+}
+\addbibresource{references.bib}
+
+% Include PDFs
+%\usepackage{pdfpages}
+
+% Erklärung
+\usepackage{multicol}
+
+% Tabellen
+\usepackage{booktabs}
+\usepackage{colortbl} % Colored tables
+
+% Math
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{textcomp}
+
+% Acronyms
+%\usepackage[acronym,automake]{glossaries}
+%\glstoctrue
+%\makeglossaries
+%
+%\newacronym{abc}{ABC}{Alphabet}
+%
+%\makeindex
+
+% Title page - thank you Peter Wilson for titlepages!
+
+\newlength{\drop}
+\newcommand*{\titleGM}{\begingroup
+\drop = 0.3\baselineskip
+\vfill
+\hbox{%
+	\hspace*{0.2\textwidth}%
+	\rule{1pt}{\textheight}
+	\hspace*{0.05\textwidth}%
+	\parbox[b]{0.75\textwidth}{
+		\vbox{%
+			{\noindent\Large\bfseries Titel dieser\\[\drop]
+				Abschlussarbeit\\[\drop]
+				in drei Zeilen
+			}\par
+			\vspace{0.25\textheight}
+			{\large {\itshape Bachelor-/Master-Thesis}\\[\drop]
+			im\\[\drop]
+			Studiengang Abcde\\[\drop]
+			Fakultät Informatik\\[\drop]
+			Hochschule Reutlingen\\[\drop]
+			Alteburgstraße 150\\[\drop]
+			72762 Reutlingen}\par
+			\vspace{0.125\textheight}
+			{\large {\itshape Eingereicht von}\\[\drop]
+			Vorname Nachname\\[\drop]
+			Straße Nr.\\[\drop]
+			PLZ Ort\\[\drop]
+			Matrikelnummer: 123456}\\[3\baselineskip]
+			{\large {\itshape Betreuer/Prüfer}\\[\drop]
+			Prof. Dr. Prüfer1\\[\drop]
+			Prof. Dr. Prüfer2\\[\drop]
+			Tag der Abgabe: 31. Februar 1970}\\[\baselineskip]
+		}% end of vbox
+	}% end of parbox
+}% end of hbox
+\endgroup}

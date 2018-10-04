@@ -1,0 +1,51 @@
+\input{head}
+
+% These author informations go into the PDF metadata
+\title{Finaler Titel dieser Abschlussarbeit}
+\author{Vorname Nachname}
+
+\begin{document}
+
+\input{pages/title}
+
+\pagenumbering{roman}
+
+\tableofcontents
+\clearpage
+
+\addcontentsline{toc}{chapter}{\abstractname~(Deutsch)}
+\begin{abstract}
+	\thispagestyle{plain}
+	\setcounter{page}{3}
+	\input{chapters/abstract}
+\end{abstract}
+\clearpage
+
+\addcontentsline{toc}{chapter}{\abstractname~(Englisch)}
+\begin{otherlanguage*}{english}
+\begin{abstract}
+	\thispagestyle{plain}
+	\setcounter{page}{4}
+	\input{chapters/abstract_en}
+\end{abstract}
+\end{otherlanguage*}
+
+\pagenumbering{arabic}
+
+\input{chapters/einfuehrung}
+\input{chapters/methodik}
+\input{chapters/umsetzung}
+\input{chapters/ergebnisse}
+\input{chapters/diskussion}
+\input{chapters/fazit}
+
+\listoffigures
+\listoftables
+%\printglossary[type=\acronymtype,title={Abkürzungsverzeichnis}]
+\printbibliography[heading=bibintoc]
+
+%\appendix
+
+\input{pages/erklaerung}
+
+\end{document}
